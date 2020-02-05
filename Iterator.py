@@ -1,5 +1,7 @@
-import os
+from parserReci import Parser
 from builtins import print
+import os
+
 
 path = 'C:/Users/Korisnik/PycharmProjects/ASPython/test-skup/python-2.7.7-docs-html'
 
@@ -19,3 +21,9 @@ if __name__ == "__main__":
     print(brojac)
     for i in range(0,len(filenames),1):
         print(filenames[i])
+        parser = Parser()
+        parser.parse("C:/Users/Korisnik/PycharmProjects/ASPython/test-skup/python-2.7.7-docs-html/" + filenames[i])
+
+    print(parser.words)
+
+
