@@ -12,7 +12,7 @@ class TrieNode(object):
         # Is it the last character of the word.`
         self.word_finished = False
         # How many times this character appeared in the addition process
-        self.counter = 1
+        self.counter = 0
         self.counterList = []
         self.pathList = []
         self.pathDict={}
@@ -30,7 +30,7 @@ def add(root, word: str, path):
             if child.char == char:
                 # We found it, increase the counter by 1 to keep track that another
                 # word has it as well
-                child.counter += 1
+
                 # And point the node to the child that contains this char
                 node = child
                 found_in_child = True
@@ -48,6 +48,8 @@ def add(root, word: str, path):
         node.pathDict[path]+=1
     else:
         node.pathDict[path]=1
+
+    node.counter += 1
 
 
 def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
