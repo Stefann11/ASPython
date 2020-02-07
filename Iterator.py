@@ -1,6 +1,7 @@
 from parserReci import Parser
 from Trie import *
 from builtins import print
+from DodavanjeGraf import *
 import os
 
 def funkcija(inp, rec):
@@ -90,11 +91,12 @@ def funkcija(inp, rec):
     print(brojac)
 
 
-
+    return dictStranica
 
 
 if __name__ == "__main__":
 
+    dictionary = {}
 
     print("Unesite korenski direktorijum")
     inp = input()
@@ -102,8 +104,9 @@ if __name__ == "__main__":
     print("Unesi rec koju zelis")
     rec = input()
 
-    funkcija(inp, rec)
 
+    dictionary = funkcija(inp, rec)
 
+    dodavanje(dictionary)
 
 
