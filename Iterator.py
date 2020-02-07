@@ -3,12 +3,11 @@ from Trie import *
 from builtins import print
 import os
 
-
 def funkcija(inp, rec):
-    # path = 'C:/Users/Korisnik/PycharmProjects/ASPython/test-skup/python-2.7.7-docs-html'
+    #path = 'C:/Users/Korisnik/PycharmProjects/ASPython/test-skup/python-2.7.7-docs-html'
 
     path = inp
-    rec = rec.lower()
+    rec=rec.lower()
 
     root = TrieNode('*')
 
@@ -19,7 +18,7 @@ def funkcija(inp, rec):
     brojacReci = []
     listaStranica = []
     dictStranica = {}
-    x = 0
+    x=0
 
     parser = Parser()
     '''
@@ -69,10 +68,10 @@ def funkcija(inp, rec):
                 parser.parse(finalPath)
                 x = 0
                 for word in parser.words:
-                    word = word.lower()
-                    add(root, word, finalPath)
+                    add(root, word.lower(), finalPath)
 
-    # print(find_prefix(root, rec))
+
+    #print(find_prefix(root, rec))
     '''
     resenje=find_prefix(root, rec)
     listaStranica=resenje[2]
@@ -80,15 +79,23 @@ def funkcija(inp, rec):
     print(resenje[1], listaStranica)
     '''
 
-    resenje = find_prefix(root, rec)
-    dictStranica = resenje[2]
+    resenje= find_prefix(root,rec)
+    dictStranica=resenje[2]
     print(dictStranica)
+    print(resenje[1])
+
+
+
 
     print(brojac)
-    print(brojacReci)
+
+
+
 
 
 if __name__ == "__main__":
+
+
     print("Unesite korenski direktorijum")
     inp = input()
 
@@ -96,3 +103,7 @@ if __name__ == "__main__":
     rec = input()
 
     funkcija(inp, rec)
+
+
+
+

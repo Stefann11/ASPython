@@ -47,7 +47,7 @@ def add(root, word: str, path):
     if path in node.pathDict:
         node.pathDict[path]+=1
     else:
-        node.pathDict[path]=0
+        node.pathDict[path]=1
 
 
 def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
@@ -73,12 +73,13 @@ def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
                 break
         # Return False anyway when we did not find a char.
         if char_not_found:
-            return False, 0
+            return False, 0, None
     # Well, we are here means we have found the prefix. Return true to indicate that
     # And also the counter of the last node. This indicates how many words have this
     # prefix
+    if node.word_finished:
+        return True, node.counter, node.pathDict
 
-    return True, node.counter, node.pathDict
 
 
 if __name__ == "__main__":
