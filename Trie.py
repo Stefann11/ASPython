@@ -1,4 +1,4 @@
-from typing import Tuple
+#from typing import Tuple
 
 
 class TrieNode(object):
@@ -13,9 +13,12 @@ class TrieNode(object):
         self.word_finished = False
         # How many times this character appeared in the addition process
         self.counter = 1
+        self.counterList = []
+        self.pathList = []
+        self.pathDict={}
 
 
-def add(root, word: str):
+def add(root, word: str, path):
     """
     Adding a word in the trie structure
     """
@@ -31,6 +34,7 @@ def add(root, word: str):
                 # And point the node to the child that contains this char
                 node = child
                 found_in_child = True
+
                 break
         # We did not find it so add a new chlid
         if not found_in_child:
@@ -40,9 +44,13 @@ def add(root, word: str):
             node = new_node
     # Everything finished. Mark it as the end of a word.
     node.word_finished = True
+    if path in node.pathDict:
+        node.pathDict[path]+=1
+    else:
+        node.pathDict[path]=0
 
 
-def find_prefix(root, prefix: str) -> Tuple[bool, int]:
+def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
     """
     Check and return
       1. If the prefix exsists in any of the words we added so far
@@ -69,12 +77,13 @@ def find_prefix(root, prefix: str) -> Tuple[bool, int]:
     # Well, we are here means we have found the prefix. Return true to indicate that
     # And also the counter of the last node. This indicates how many words have this
     # prefix
-    return True, node.counter
+
+    return True, node.counter, node.pathDict
 
 
 if __name__ == "__main__":
     root = TrieNode('*')
-    add(root, "hackathon")
+    add(root, 'hackathon')
     add(root, 'hack')
 
     print(find_prefix(root, 'hac'))

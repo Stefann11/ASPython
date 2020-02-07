@@ -82,7 +82,4 @@ class Parser(HTMLParser):
         finally:
             return self.links, self.words
 
-#if __name__ == "__main__":
- #   parser = Parser()
-  #  parser.parse("C:/Users/Korisnik/PycharmProjects/ASPython/test-skup/python-2.7.7-docs-html/about.html")
 
