@@ -18,6 +18,7 @@ def funkcija(inp, rec):
     brojac = 0
     dictStranica = {}
     dictLinkova = {}
+    listaStranica = []
 
     parser = Parser()
 
@@ -32,7 +33,7 @@ def funkcija(inp, rec):
                 brojac = brojac + 1
                 parser.parse(finalPath)
                 for word in parser.words:
-                    add(root, word.lower(), finalPath,parser.links)
+                    add(root, word.lower(), finalPath,parser.links,filename)
 
     resenje= find_prefix(root,rec)
     dictStranica=resenje[2]
@@ -40,17 +41,19 @@ def funkcija(inp, rec):
     dictLinkova=resenje[3]
     print(dictLinkova)
     print(resenje[1])
+    listaStranica=resenje[4]
 
     print(brojac)
 
 
-    return dictStranica, dictLinkova
+    return dictStranica, dictLinkova, listaStranica
 
 
 if __name__ == "__main__":
 
     dictionary = {}
     dictLinks = {}
+    nameList = []
 
     print("Unesite korenski direktorijum")
     inp = input()
@@ -62,6 +65,10 @@ if __name__ == "__main__":
     vraceno = funkcija(inp, rec)
     dictionary = vraceno[0]
     dictLinks = vraceno[1]
+    nameList = vraceno[2]
+
+    print("----------------------------------------")
+    print(nameList)
 
     dodavanje(dictLinks, inp)
 

@@ -13,12 +13,12 @@ class TrieNode(object):
         self.word_finished = False
         # How many times this character appeared in the addition process
         self.counter = 0
-        self.counterList = []
         self.listDict={}
         self.pathDict={}
+        self.nameList = []
 
 
-def add(root, word: str, path, links):
+def add(root, word: str, path, links, filename):
     """
     Adding a word in the trie structure
     """
@@ -50,6 +50,8 @@ def add(root, word: str, path, links):
     else:
         node.pathDict[path]=1
         node.listDict[path]=[]
+    if filename not in node.nameList:
+        node.nameList.append(filename)
 
     node.counter += 1
 
@@ -82,7 +84,7 @@ def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
     # And also the counter of the last node. This indicates how many words have this
     # prefix
     if node.word_finished:
-        return True, node.counter, node.pathDict, node.listDict
+        return True, node.counter, node.pathDict, node.listDict, node.nameList
 
 
 
