@@ -44,12 +44,13 @@ def funkcija(inp, rec):
     print(brojac)
 
 
-    return dictStranica
+    return dictStranica, dictLinkova
 
 
 if __name__ == "__main__":
 
     dictionary = {}
+    dictLinks = {}
 
     print("Unesite korenski direktorijum")
     inp = input()
@@ -58,8 +59,10 @@ if __name__ == "__main__":
     rec = input()
 
 
-    dictionary = funkcija(inp, rec)
+    vraceno = funkcija(inp, rec)
+    dictionary = vraceno[0]
+    dictLinks = vraceno[1]
 
-    dodavanje(dictionary)
+    dodavanje(dictLinks, inp)
 
 
