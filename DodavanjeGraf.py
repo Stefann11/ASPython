@@ -1,7 +1,7 @@
 from Graf2 import *
 import os
 
-def dodavanje(dict, inp):
+def dodavanje(dict, inp, listaImenaStranica):
     graph = Graph()
 
 
@@ -15,9 +15,10 @@ def dodavanje(dict, inp):
     for file in dict:
         graph.add_vertex(file)
         for link in dict[file]:
-            print(os.path.basename(link))
-            if os.path.basename(link) in dict.keys():
-                graph.add_edge(file, link)
+            #print(os.path.basename(link))
+            #print(os.path.basename(file))
+            if os.path.basename(link) in listaImenaStranica:
+                graph.add_edge({file,link})
             inp = poc
 
 

@@ -67,7 +67,7 @@ class Graph(object):
 
 
 if __name__ == "__main__":
-    g = {"a": ["d"],
+    g = {"a": ["d", "ro"],
          "b": ["c"],
          "c": ["b", "c", "d", "e"],
          "d": ["a", "c"],

@@ -67,9 +67,8 @@ if __name__ == "__main__":
     dictLinks = vraceno[1]
     nameList = vraceno[2]
 
-    print("----------------------------------------")
-    print(nameList)
 
-    dodavanje(dictLinks, inp)
+
+    dodavanje(dictLinks, inp, nameList)
 
 
