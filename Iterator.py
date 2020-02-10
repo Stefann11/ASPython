@@ -73,26 +73,34 @@ if __name__ == "__main__":
 
     root=dodaj(inp)
 
+    if root is None:
+        print("Niste dobro uneli ulazni file")
+
     print(provera(rec))
 
-    if provera(rec) == 1:
+    res=provera(rec)
+
+    proveravaj=res[0]
+    listaReci=res[1]
+
+    if proveravaj == 1:
         print("AND upit")
-        listaReci=rec.split(" AND ")
+        #listaReci=rec.split(" AND ")
         print(listaReci)
-    elif provera(rec) == 2:
+    elif proveravaj == 2:
         print("OR upit")
-        listaReci=rec.split(" OR ")
+        #listaReci=rec.split(" OR ")
         print(listaReci)
-    elif provera(rec) == 3:
+    elif proveravaj == 3:
         print("NOT SAM upit")
-        listaReci=rec[4:]
+        #listaReci=rec[4:]
         print(listaReci)
-    elif provera(rec) == 4:
+    elif proveravaj == 4:
         print("NOT upit")
-        listaReci=rec.split(" NOT ")
+        #listaReci=rec.split(" NOT ")
         print(listaReci)
-    elif provera(rec)==5:
-        listaReci=rec.split(" ")
+    elif proveravaj==5:
+        #listaReci=rec.split(" ")
         print(listaReci)
 
         for rec2 in listaReci:
