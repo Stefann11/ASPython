@@ -4,12 +4,6 @@ class Set:
         for arg in args:
             self.add(arg)
 
-    def __repr__(self):
-        import string
-        elems = map(repr, self._dict.keys(  ))
-        elems.sort(  )
-        return "%s(%s)" % (self.__class__.__name__, string.join(elems, ', '))
-
     def extend(self, args):
         """ Add several items at once. """
         for arg in args:
@@ -19,6 +13,8 @@ class Set:
         """ Add one item to the set. """
         if key not in self._dict:
             self._dict[key] = value
+        else:
+            self._dict[key]+=value
 
     def remove(self, item):
         """ Remove an item from the set. """
