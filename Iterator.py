@@ -12,10 +12,12 @@ def dodaj(inp):
 
     brojac = 0
     root = TrieNode('*')
+    graph = Graph()
 
     folder = os.fsencode(path)
 
     filenames = []
+    dictGraf={}
 
 
     parser = Parser()
@@ -30,8 +32,25 @@ def dodaj(inp):
                 filenames.append(filename)
                 brojac = brojac + 1
                 parser.parse(finalPath)
+                dictGraf[finalPath] = parser.links
                 for word in parser.words:
                     add(root, word.lower(), finalPath,parser.links,filename)
+
+
+
+    #za graf
+    dodavanjeUGraf(graph,dictGraf,filenames)
+    '''
+    for subdir, dirs, files in os.walk(path):
+        for file in files:
+            filename = os.fsdecode(file)
+            if filename.endswith('.html'):
+
+                finalPath = (os.path.join(subdir, file))
+                brojac = brojac + 1
+                parser.parse(finalPath)
+                dodavanjeUGraf(graph, finalPath, parser.links, filenames)
+                '''
 
     print("Ukupan broj HTML stranica: ", brojac)
     return root
@@ -109,7 +128,7 @@ if __name__ == "__main__":
             dictLinks = vraceno[1]
             nameList = vraceno[2]
 
-            dodavanje(dictLinks, inp, nameList)
+            #dodavanje(dictLinks, inp, nameList)
     else:
         print("Nije dobar format")
 
