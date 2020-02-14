@@ -52,23 +52,23 @@ class Set:
     def __or__(self, other):
         """Vraća novi skup kao uniju self i other."""
         result = Set() # rezultat je nova instanca
-        for key, value in self.items():
+        for key, value in self._dict.items():
             result.add(key,value)
-        for key, value in other.items():
+        for key, value in other._dict.items():
             result.add(key,value)
         return result
 
     def __and__(self, other):
         result = Set()  # rezultat je nova instanca
-        for key, value in self.items():
-            if key in other:
+        for key, value in self._dict.items():
+            if key in other._dict.keys():
                 result.add(key, value)
         return result
 
     def __not__(self, other):
         result = Set()  # rezultat je nova instanca
-        for key, value in self.items():
-            if key not in other.keys():
+        for key, value in self._dict.items():
+            if key not in other._dict.keys():
                 result.add(key, value)
         return result
 

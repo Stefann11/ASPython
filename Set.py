@@ -13,7 +13,7 @@ def unija(dict1,dict2):
 def presek(dict1,dict2):
     dictVracanje = {}
     i = 0
-    for (key1, value1) in dict1:
+    for (key1, value1) in dict1.items():
         if key1 in dict2.keys():
             #ovde dodajem samo one koji su u direktorijumu2 i u direkorijumu1
             dictVracanje[key1]=value1
@@ -22,7 +22,7 @@ def presek(dict1,dict2):
 def komplement(dict1,dict2):
     dictVracanje = {}
     i = 0
-    for (key1, value1) in dict1:
+    for (key1, value1) in dict1.items():
         if key1 not in dict2.keys():
             #ovde dodajem samo one koji su u direktorijumu1 a ne u direktorijumu2
             dictVracanje[key1]=value1
