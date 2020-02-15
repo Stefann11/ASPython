@@ -104,3 +104,4 @@ if __name__ == "__main__":
     print(graph.vertices())
     print("Edges of graph:")
     print(graph.edges())
+

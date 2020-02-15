@@ -1,8 +1,7 @@
 class Set:
-    def __init__(self, *args):
+    def __init__(self):
         self._dict = {}
-        for arg in args:
-            self.add(arg)
+
 
     def extend(self, args):
         """ Add several items at once. """
@@ -63,6 +62,7 @@ class Set:
         for key, value in self._dict.items():
             if key in other._dict.keys():
                 result.add(key, value)
+                result.add(key, other._dict[key])
         return result
 
     def __not__(self, other):

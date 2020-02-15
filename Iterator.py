@@ -5,6 +5,7 @@ from DodavanjeGraf import *
 from Upit import *
 from Set import *
 from SetImpl import *
+from Rang import *
 import os
 
 def dodaj(inp):
@@ -14,13 +15,16 @@ def dodaj(inp):
 
     brojac = 0
     root = TrieNode('*')
-
+    graf = Graph()
     folder = os.fsencode(path)
 
     filenames = []
-
+    dictGraf = {}
+    rangStranica = {}
+    imenaStranicaSaLinkovima = {}
 
     parser = Parser()
+
 
     for subdir, dirs, files in os.walk(path):
         for file in files:
@@ -32,11 +36,15 @@ def dodaj(inp):
                 filenames.append(filename)
                 brojac = brojac + 1
                 parser.parse(finalPath)
+                dictGraf[finalPath] = parser.links
                 for word in parser.words:
                     add(root, word.lower(), finalPath,parser.links,filename)
 
+    rangStranica, imenaStranicaSaLinkovima = dodavanjeUGraf(graf,dictGraf,filenames)
+    print("Svi html fileovi sa svim linkovima")
+    print(dictGraf)
     print("Ukupan broj HTML stranica: ", brojac)
-    return root
+    return root, rangStranica, imenaStranicaSaLinkovima
 
 
 def trazi(root, rec):
@@ -50,6 +58,7 @@ def trazi(root, rec):
     resenje = find_prefix(root,rec)
     dictStranica = resenje[2]
     print(dictStranica)
+    print("Linkovi na stranicama")
     dictLinkova = resenje[3]
     print(dictLinkova)
     print("Ukupan broj reci: ", resenje[1])
@@ -60,7 +69,6 @@ def trazi(root, rec):
 
 
     return set, dictLinkova, listaStranica
-
 
 if __name__ == "__main__":
 
@@ -76,6 +84,8 @@ if __name__ == "__main__":
     dictLinks2 = {}
     nameList2 = []
 
+    rangStranica = {}
+    imenaStranicaSaLinkovima = {}
 
     listaReci = []
 
@@ -85,7 +95,15 @@ if __name__ == "__main__":
     print("Unesi rec koju zelis")
     rec = input()
 
-    root=dodaj(inp)
+
+
+    prvaFunk = dodaj(inp)
+
+    root = prvaFunk[0]
+    rangStranica = prvaFunk[1]
+    imenaStranicaSaLinkovima = prvaFunk[2]
+
+
 
     if root is None:
         print("Niste dobro uneli ulazni file")
@@ -96,6 +114,8 @@ if __name__ == "__main__":
 
     proveravaj=res[0]
     listaReci=res[1]
+
+    flag = 1
 
     if proveravaj == 1:
         print("AND upit")
@@ -175,3 +195,10 @@ if __name__ == "__main__":
 
     else:
         print("Nije dobar format")
+        flag = 0
+
+    if (flag == 1):
+        odrediRang(resultSet, rangStranica, imenaStranicaSaLinkovima)
+
+
+
