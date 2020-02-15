@@ -16,6 +16,7 @@ def dodaj(inp):
     brojac = 0
     root = TrieNode('*')
     graf = Graph()
+    set = Set()
     folder = os.fsencode(path)
 
     filenames = []
@@ -37,6 +38,7 @@ def dodaj(inp):
                 brojac = brojac + 1
                 parser.parse(finalPath)
                 dictGraf[finalPath] = parser.links
+                set.add(finalPath, 0)
                 for word in parser.words:
                     add(root, word.lower(), finalPath,parser.links,filename)
 
@@ -44,7 +46,7 @@ def dodaj(inp):
     print("Svi html fileovi sa svim linkovima")
     print(dictGraf)
     print("Ukupan broj HTML stranica: ", brojac)
-    return root, rangStranica, imenaStranicaSaLinkovima
+    return root, rangStranica, imenaStranicaSaLinkovima, set
 
 
 def trazi(root, rec):
@@ -70,135 +72,7 @@ def trazi(root, rec):
 
     return set, dictLinkova, listaStranica
 
-if __name__ == "__main__":
 
-    dictLinks = {}
-    nameList = []
-    resultSet = Set()
-
-    set1 = Set()
-    dictLinks1 = {}
-    nameList1 = []
-
-    set2 = Set()
-    dictLinks2 = {}
-    nameList2 = []
-
-    rangStranica = {}
-    imenaStranicaSaLinkovima = {}
-
-    listaReci = []
-
-    print("Unesite korenski direktorijum")
-    inp = input()
-
-    print("Unesi rec koju zelis")
-    rec = input()
-
-
-
-    prvaFunk = dodaj(inp)
-
-    root = prvaFunk[0]
-    rangStranica = prvaFunk[1]
-    imenaStranicaSaLinkovima = prvaFunk[2]
-
-
-
-    if root is None:
-        print("Niste dobro uneli ulazni file")
-
-    print(provera(rec))
-
-    res=provera(rec)
-
-    proveravaj=res[0]
-    listaReci=res[1]
-
-    flag = 1
-
-    if proveravaj == 1:
-        print("AND upit")
-        vraceno1 = trazi(root, listaReci[0])
-        set1 = vraceno1[0]
-        dictLinks1 = vraceno1[1]
-        nameList1 = vraceno1[2]
-
-        vraceno2 = trazi(root, listaReci[2])
-        set2 = vraceno2[0]
-        dictLinks2 = vraceno2[1]
-        nameList2 = vraceno2[2]
-
-        resultSet = set1.__and__(set2)
-
-        for key, value in resultSet._dict.items():
-            print(key, value)
-
-        #dictLinks = presek(dictLinks1,dictLinks2)
-        #print(dictLinks)
-    elif proveravaj == 2:
-        print("OR upit")
-        vraceno1 = trazi(root, listaReci[0])
-        set1 = vraceno1[0]
-        dictLinks1 = vraceno1[1]
-        nameList1 = vraceno1[2]
-
-        vraceno2 = trazi(root, listaReci[2])
-        set2 = vraceno2[0]
-        dictLinks2 = vraceno2[1]
-        nameList2 = vraceno2[2]
-
-        resultSet=set1.__or__(set2)
-
-        for key, value in resultSet._dict.items():
-            print(key, value)
-
-        #dictLinks = unija(dictLinks1, dictLinks2)
-        #print(dictLinks)
-    elif proveravaj == 3:
-        print("NOT SAM upit")
-        #listaReci=rec[4:]
-        print(listaReci)
-    elif proveravaj == 4:
-        print("NOT upit")
-        vraceno1 = trazi(root, listaReci[0])
-        set1 = vraceno1[0]
-        dictLinks1 = vraceno1[1]
-        nameList1 = vraceno1[2]
-
-        vraceno2 = trazi(root, listaReci[2])
-        set2 = vraceno2[0]
-        dictLinks2 = vraceno2[1]
-        nameList2 = vraceno2[2]
-
-        resultSet = set1.__not__(set2)
-        for key, value in resultSet._dict.items():
-            print(key, value)
-
-        #dictLinks = komplement(dictLinks1, dictLinks2)
-        #print(dictLinks)
-    elif proveravaj==5:
-        #listaReci=rec.split(" ")
-        print(listaReci)
-
-        for rec2 in listaReci:
-            vraceno = trazi(root, rec2)
-            set1 = vraceno[0]
-            dictLinks1 = vraceno[1]
-            nameList1 = vraceno[2]
-
-            resultSet = resultSet.__or__(set1)
-            #dictLinks=unija(dictLinks, dictLinks1)
-        #print(dictLinks)
-        for key, value in resultSet._dict.items():
-            print(key, value)
-
-    else:
-        print("Nije dobar format")
-        flag = 0
-
-    if (flag == 1):
-        odrediRang(resultSet, rangStranica, imenaStranicaSaLinkovima)
 
 
 
