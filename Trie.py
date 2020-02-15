@@ -47,10 +47,10 @@ def add(root, word: str, path, links, filename):
     node.word_finished = True
     if path in node.pathDict:
         node.pathDict[path]+=1
-        node.listDict[path]=links
     else:
         node.pathDict[path]=1
-        node.listDict[path]=[]
+        node.listDict[path]=links
+
     if filename not in node.nameList:
         node.nameList.append(filename)
 
