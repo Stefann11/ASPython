@@ -3,7 +3,7 @@ from Trie import *
 from builtins import print
 from DodavanjeGraf import *
 from Upit import *
-from Set import *
+from LogDict import *
 from SetImpl import *
 from Rang import *
 import os
