@@ -19,7 +19,7 @@ def odrediRang(set, rangStranice, imenaStranicaSaLinkovima):
     for key, value in rangStranice.items():
         rezultujuciSet.add(key, value)
     for key, value in dictRang.items():
-        rezultujuciSet.add(key, value)
+        rezultujuciSet.add(key, value) 
 
     print("PRIKAZ KRAJNJEG SETA")
     for key, value in rezultujuciSet._dict.items():
