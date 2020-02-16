@@ -38,13 +38,13 @@ def dodaj(inp):
                 brojac = brojac + 1
                 parser.parse(finalPath)
                 dictGraf[finalPath] = parser.links
-                set.add(finalPath, 0)
+                set.add(finalPath)
                 for word in parser.words:
                     add(root, word.lower(), finalPath,parser.links,filename)
 
     rangStranica, imenaStranicaSaLinkovima = dodavanjeUGraf(graf,dictGraf,filenames)
-    print("Svi html fileovi sa svim linkovima")
-    print(dictGraf)
+    #print("Svi html fileovi sa svim linkovima")
+    #print(dictGraf)
     print("Ukupan broj HTML stranica: ", brojac)
     return root, rangStranica, imenaStranicaSaLinkovima, set
 
@@ -70,7 +70,7 @@ def trazi(root, rec):
 
 
 
-    return set, dictLinkova, listaStranica
+    return set, dictLinkova, listaStranica, dictStranica
 
 
 

@@ -57,7 +57,7 @@ def add(root, word: str, path, links, filename):
     if filename not in node.nameList:
         node.nameList.append(filename)
 
-    node.pathSet.add(path, 1)
+    node.pathSet.add(path)
 
     node.counter += 1
 
