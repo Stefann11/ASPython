@@ -117,9 +117,6 @@ def quick_sort2(arr, left, right):
         quick_sort2(arr, left, pivot - 1)
         quick_sort2(arr, pivot + 1, right)
 
-
-if __name__ == "__main__":
-    dict = {'A' : 4, 'B' : 16, 'C' : 111, 'D' : 1}
     '''
     for index, (key, value) in enumerate(dict.items()):
         print(index, key, value)
@@ -131,6 +128,7 @@ if __name__ == "__main__":
     for key, value in dict.items():
         print(key, value)
     '''
+def sortiranje(dict):
     niz = []
     dict2 = {}
 
@@ -143,7 +141,14 @@ if __name__ == "__main__":
         for key, value in dict.items():
             if value == i:
                 dict2[key] = value
-                break
     del dict[key]
 
-    print(dict2)
+    return dict2
+
+if __name__ == "__main__":
+    dict = {'A': 4, 'B': 77, 'C': 50, 'D': 50}
+
+    dict = sortiranje(dict)
+
+    for key, value in dict.items():
+        print(key, value)

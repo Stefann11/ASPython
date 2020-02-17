@@ -31,13 +31,17 @@ def dodavanjeUGraf(graph, dict, imeStranica):
     for key, value in imenaStranicaSaLinkovima.items():
         print(key,value)
     '''
+
+
+    '''
     print("Vertices of graph:")
     print(graph.vertices())
 
     print("Edges of graph:")
     print(graph.edges())
-
+    '''
     return rangStranica, imenaStranicaSaLinkovima
+
 
 
 

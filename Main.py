@@ -10,7 +10,7 @@ import os
 
 if __name__ == "__main__":
 
-    rec = 1
+
     inp = 1
 
     dictStranica = {}
@@ -35,6 +35,9 @@ if __name__ == "__main__":
     listaReci = []
 
     while inp != "0":
+
+        rec = 1
+
         print("Unesite korenski direktorijum, 0 za kraj")
         inp = input()
 
@@ -111,8 +114,8 @@ if __name__ == "__main__":
                         resultSet=set1.__or__(set2)
                         dictStranica = unija(dictStranica1, dictStranica2)
 
-                        for key, value in resultSet._dict.items():
-                            print(key, value)
+                        for item in resultSet._dict:
+                            print(item)
 
                         #dictLinks = unija(dictLinks1, dictLinks2)
                         #print(dictLinks)
@@ -126,8 +129,8 @@ if __name__ == "__main__":
 
                         resultSet = ceoSet.__not__(set2)
                         #fali za broj reci
-                        for key, value in resultSet._dict.items():
-                            print(key, value)
+                        for item in resultSet._dict:
+                            print(item)
                     elif proveravaj == 4:
                         print("NOT upit")
                         vraceno1 = trazi(root, listaReci[0])
@@ -144,8 +147,8 @@ if __name__ == "__main__":
 
                         resultSet = set1.__not__(set2)
                         dictStranica = komplement(dictStranica1, dictStranica2)
-                        for key, value in resultSet._dict.items():
-                            print(key, value)
+                        for item in resultSet._dict:
+                            print(item)
 
                         #dictLinks = komplement(dictLinks1, dictLinks2)
                         #print(dictLinks)
@@ -158,14 +161,14 @@ if __name__ == "__main__":
                             set1 = vraceno[0]
                             dictLinks1 = vraceno[1]
                             nameList1 = vraceno[2]
-                            dictStranica1 = vraceno1[3]
+                            dictStranica1 = vraceno[3]
 
                             resultSet = resultSet.__or__(set1)
                             dictStranica = unija(dictStranica, dictStranica1)
                             #dictLinks=unija(dictLinks, dictLinks1)
                         #print(dictLinks)
-                        for key, value in resultSet._dict.items():
-                            print(key, value)
+                        for item in resultSet._dict:
+                            print(item)
 
                     else:
                         print("Nije dobar format")
