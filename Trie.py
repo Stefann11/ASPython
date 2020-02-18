@@ -85,7 +85,7 @@ def find_prefix(root, prefix: str):  #-> Tuple[bool, int]:
                 break
         # Return False anyway when we did not find a char.
         if char_not_found:
-            return False, 0, node.pathDict, node.listDict, node.nameList, node.pathSet
+            return False, 0, {}, {}, [], Set()
     # Well, we are here means we have found the prefix. Return true to indicate that
     # And also the counter of the last node. This indicates how many words have this
     # prefix

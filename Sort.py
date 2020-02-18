@@ -129,6 +129,8 @@ def quick_sort2(arr, left, right):
         print(key, value)
     '''
 def sortiranje(dict):
+    if dict == {}:
+        return {}
     niz = []
     dict2 = {}
 

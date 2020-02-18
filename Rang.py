@@ -50,6 +50,8 @@ def odrediRang(dictStranica, rangStranice, imenaStranicaSaLinkovima):
 
     rezultujuciDict = sortiranje(rezultujuciDict)
 
-    print("Prikaz sortiranog rezultata")
-    for key, value in rezultujuciDict.items():
-        print(key, value)
+    if rezultujuciDict != {}:
+        print("Prikaz sortiranog rezultata")
+        for key, value in rezultujuciDict.items():
+            print(key, value)
+        return rezultujuciDict

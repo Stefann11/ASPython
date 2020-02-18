@@ -13,27 +13,6 @@ if __name__ == "__main__":
 
     inp = 1
 
-    dictStranica = {}
-    dictLinks = {}
-    nameList = []
-    resultSet = Set()
-    ceoSet = Set()
-
-    set1 = Set()
-    dictLinks1 = {}
-    nameList1 = []
-    dictStranica1 = {}
-
-    set2 = Set()
-    dictLinks2 = {}
-    nameList2 = []
-    dictStranica2 = {}
-
-    rangStranica = {}
-    imenaStranicaSaLinkovima = {}
-
-    listaReci = []
-
     while inp != "0":
 
         rec = 1
@@ -50,6 +29,28 @@ if __name__ == "__main__":
             print("Niste dobro uneli korenski direktorijum")
         else:
             while rec != "0":
+
+                dictStranica = {}
+                dictLinks = {}
+                nameList = []
+                resultSet = Set()
+                ceoSet = Set()
+
+                set1 = Set()
+                dictLinks1 = {}
+                nameList1 = []
+                dictStranica1 = {}
+
+                set2 = Set()
+                dictLinks2 = {}
+                nameList2 = []
+                dictStranica2 = {}
+
+                rangStranica = {}
+                imenaStranicaSaLinkovima = {}
+
+                listaReci = []
+
                 print("Unesi rec koju zelis, 0 za kraj")
                 rec = input()
 
@@ -175,4 +176,4 @@ if __name__ == "__main__":
                         flag = 0
 
                     if flag == 1:
-                        odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
+                        sortiraniDict = odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
