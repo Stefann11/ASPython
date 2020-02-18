@@ -6,6 +6,7 @@ from Upit import *
 from LogDict import *
 from SetImpl import *
 from Iterator import *
+from Paginacija import *
 import os
 
 if __name__ == "__main__":
@@ -177,3 +178,4 @@ if __name__ == "__main__":
 
                     if flag == 1:
                         sortiraniDict = odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
+                        paginacija(sortiraniDict)

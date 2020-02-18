@@ -11,17 +11,17 @@ def dodavanjeUGraf(graph, dict, imeStranica):
         for link in dict[file]:
             # print(os.path.basename(link))
             # print(os.path.basename(file))
-            if os.path.basename(link) in imeStranica:
-                graph.add_edge({file, link})
-                if link in rangStranica:
-                    rangStranica[link]+=1
-                else:
-                    rangStranica[link] = 1
+            #if os.path.basename(link) in imeStranica:
+            graph.add_edge({file, link})
+            if link in rangStranica:
+                rangStranica[link]+=1
+            else:
+                rangStranica[link] = 1
 
-                if link in imenaStranicaSaLinkovima:
-                    imenaStranicaSaLinkovima[link].append(file)
-                else:
-                    imenaStranicaSaLinkovima[link] = [file]
+            if link in imenaStranicaSaLinkovima:
+                imenaStranicaSaLinkovima[link].append(file)
+            else:
+                imenaStranicaSaLinkovima[link] = [file]
 
     '''
     print("Rang stranica")
