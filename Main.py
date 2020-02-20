@@ -121,27 +121,17 @@ if __name__ == "__main__":
 
                         #dictLinks = unija(dictLinks1, dictLinks2)
                         #print(dictLinks)
-                    elif proveravaj == 3:
-                        print("NOT SAM upit")
-                        vraceno = trazi(root, listaReci[1])
-                        set2 = vraceno[0]
-                        dictLinks2 = vraceno[1]
-                        nameList2 = vraceno[2]
-                        dictStranica2 = vraceno[3]
-
-                        resultSet = ceoSet.__not__(set2)
-                        #fali za broj reci
-                        for item in resultSet._dict:
-                            print(item)
                     elif proveravaj == 4:
                         print("NOT upit")
                         vraceno1 = trazi(root, listaReci[0])
+                        vraceno2 = trazi(root, listaReci[2])
+                        #if vraceno1[3] == {} and vraceno2[3] == {}:
                         set1 = vraceno1[0]
                         dictLinks1 = vraceno1[1]
                         nameList1 = vraceno1[2]
                         dictStranica1 = vraceno1[3]
 
-                        vraceno2 = trazi(root, listaReci[2])
+
                         set2 = vraceno2[0]
                         dictLinks2 = vraceno2[1]
                         nameList2 = vraceno2[2]
@@ -160,6 +150,7 @@ if __name__ == "__main__":
 
                         for rec2 in listaReci:
                             vraceno = trazi(root, rec2)
+
                             set1 = vraceno[0]
                             dictLinks1 = vraceno[1]
                             nameList1 = vraceno[2]
@@ -168,6 +159,10 @@ if __name__ == "__main__":
                             resultSet = resultSet.__or__(set1)
                             dictStranica = unija(dictStranica, dictStranica1)
                             #dictLinks=unija(dictLinks, dictLinks1)
+                            if dictStranica != {}:
+                                print("Postoje stranice")
+                            else:
+                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
                         #print(dictLinks)
                         for item in resultSet._dict:
                             print(item)

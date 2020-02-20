@@ -58,21 +58,22 @@ def trazi(root, rec):
     set = Set()
 
     resenje = find_prefix(root,rec)
-    dictStranica = resenje[2]
-    print(dictStranica)
-    print("Linkovi na stranicama")
-    dictLinkova = resenje[3]
-    print(dictLinkova)
-    print("Ukupan broj reci: ", resenje[1])
-    listaStranica = resenje[4]
-    set = resenje[5]
+    if resenje is not None:
+        dictStranica = resenje[2]
+        print(dictStranica)
+        print("Linkovi na stranicama")
+        dictLinkova = resenje[3]
+        print(dictLinkova)
+        print("Ukupan broj reci: ", resenje[1])
+        listaStranica = resenje[4]
+        set = resenje[5]
 
 
 
 
-    return set, dictLinkova, listaStranica, dictStranica
+        return set, dictLinkova, listaStranica, dictStranica
 
-
+    return Set(), {}, [], {}
 
 
 
