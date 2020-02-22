@@ -16,7 +16,6 @@ def dodaj(inp):
     brojac = 0
     root = TrieNode('*')
     graf = Graph()
-    set = Set()
     folder = os.fsencode(path)
 
     filenames = []
@@ -33,20 +32,18 @@ def dodaj(inp):
             if filename.endswith('.html'):
 
                 finalPath = (os.path.join(subdir, file))
-                # print(finalPath)
                 filenames.append(filename)
                 brojac = brojac + 1
                 parser.parse(finalPath)
                 dictGraf[finalPath] = parser.links
-                set.add(finalPath)
                 for word in parser.words:
-                    add(root, word.lower(), finalPath,parser.links,filename)
+                    add(root, word.lower(), finalPath,parser.links)
 
     rangStranica, imenaStranicaSaLinkovima = dodavanjeUGraf(graf,dictGraf,filenames)
     #print("Svi html fileovi sa svim linkovima")
     #print(dictGraf)
     print("Ukupan broj HTML stranica: ", brojac)
-    return root, rangStranica, imenaStranicaSaLinkovima, set
+    return root, rangStranica, imenaStranicaSaLinkovima
 
 
 def trazi(root, rec):
@@ -54,7 +51,6 @@ def trazi(root, rec):
 
     dictStranica = {}
     dictLinkova = {}
-    listaStranica = []
     set = Set()
 
     resenje = find_prefix(root,rec)
@@ -65,15 +61,14 @@ def trazi(root, rec):
         dictLinkova = resenje[3]
         print(dictLinkova)
         print("Ukupan broj reci: ", resenje[1])
-        listaStranica = resenje[4]
-        set = resenje[5]
+        set = resenje[4]
 
 
 
 
-        return set, dictLinkova, listaStranica, dictStranica
+        return set, dictLinkova, dictStranica
 
-    return Set(), {}, [], {}
+    return Set(), {}, {}
 
 
 

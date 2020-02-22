@@ -13,11 +13,10 @@ if __name__ == "__main__":
 
 
     inp = 1
+    direkt = 0
+    izlaz = 1
 
-    while inp != "0":
-
-        rec = 1
-
+    while direkt == 0 or inp != "0":
         print("Unesite korenski direktorijum, 0 za kraj")
         inp = input()
 
@@ -28,149 +27,160 @@ if __name__ == "__main__":
         root = prvaFunk[0]
         if is_empty(root):
             print("Niste dobro uneli korenski direktorijum")
+            direkt = 0
         else:
-            while rec != "0":
+            direkt = 1
 
-                dictStranica = {}
-                dictLinks = {}
-                nameList = []
-                resultSet = Set()
-                ceoSet = Set()
+            while izlaz != "0":
 
-                set1 = Set()
-                dictLinks1 = {}
-                nameList1 = []
-                dictStranica1 = {}
+                rec = 1
+                print("Unesite 1 za ponovni unos direktorijuma")
+                print("Unesite 2 za unos upita")
+                print("Unesite 0 ukoliko želite da izadjete iz programa")
+                izlaz = input()
 
-                set2 = Set()
-                dictLinks2 = {}
-                nameList2 = []
-                dictStranica2 = {}
-
-                rangStranica = {}
-                imenaStranicaSaLinkovima = {}
-
-                listaReci = []
-
-                print("Unesi rec koju zelis, 0 za kraj")
-                rec = input()
-
-                if rec == "0":
+                if izlaz == "0":
                     break
 
+                if izlaz == "1":
+                    direkt2 = 0
+                    while direkt2 == 0:
+                        print("Unesite korenski direktorijum")
+                        inp = input()
 
-                rangStranica = prvaFunk[1]
-                imenaStranicaSaLinkovima = prvaFunk[2]
-                ceoSet = prvaFunk[3]
+                        prvaFunk = dodaj(inp)
+                        root = prvaFunk[0]
+                        if is_empty(root):
+                            print("Niste dobro uneli korenski direktorijum")
+                            direkt2 = 0
+                        else:
+                            direkt2 = 1
+                elif izlaz == "2":
+                    dictStranica = {}
+                    dictLinks = {}
+                    resultSet = Set()
 
-                res=provera(rec)
+                    set1 = Set()
+                    dictLinks1 = {}
+                    dictStranica1 = {}
 
-                proveravaj=res[0]
-                listaReci=res[1]
+                    set2 = Set()
+                    dictLinks2 = {}
+                    dictStranica2 = {}
 
-                flag = 1
+                    rangStranica = {}
+                    imenaStranicaSaLinkovima = {}
 
-                if rec == "":
-                    print("Ne mozete uneti prazan string")
-                else:
+                    listaReci = []
 
-                    if proveravaj == 1:
-                        print("AND upit")
-                        vraceno1 = trazi(root, listaReci[0])
-                        set1 = vraceno1[0]
-                        dictLinks1 = vraceno1[1]
-                        nameList1 = vraceno1[2]
-                        dictStranica1 = vraceno1[3]
+                    print("Unesi upit koju želiš")
+                    rec = input()
 
-                        vraceno2 = trazi(root, listaReci[2])
-                        set2 = vraceno2[0]
-                        dictLinks2 = vraceno2[1]
-                        nameList2 = vraceno2[2]
-                        dictStranica2 = vraceno2[3]
-
-                        resultSet = set1.__and__(set2)
-                        dictStranica = presek(dictStranica1, dictStranica2)
-
-                        for item in resultSet._dict:
-                            print(item)
-
-                        for key,value in dictStranica.items():
-                            print(key, value)
-
-                        #dictLinks = presek(dictLinks1,dictLinks2)
-                        #print(dictLinks)
-                    elif proveravaj == 2:
-                        print("OR upit")
-                        vraceno1 = trazi(root, listaReci[0])
-                        set1 = vraceno1[0]
-                        dictLinks1 = vraceno1[1]
-                        nameList1 = vraceno1[2]
-                        dictStranica1 = vraceno1[3]
-
-                        vraceno2 = trazi(root, listaReci[2])
-                        set2 = vraceno2[0]
-                        dictLinks2 = vraceno2[1]
-                        nameList2 = vraceno2[2]
-                        dictStranica2 = vraceno2[3]
-
-                        resultSet=set1.__or__(set2)
-                        dictStranica = unija(dictStranica1, dictStranica2)
-
-                        for item in resultSet._dict:
-                            print(item)
-
-                        #dictLinks = unija(dictLinks1, dictLinks2)
-                        #print(dictLinks)
-                    elif proveravaj == 4:
-                        print("NOT upit")
-                        vraceno1 = trazi(root, listaReci[0])
-                        vraceno2 = trazi(root, listaReci[2])
-                        #if vraceno1[3] == {} and vraceno2[3] == {}:
-                        set1 = vraceno1[0]
-                        dictLinks1 = vraceno1[1]
-                        nameList1 = vraceno1[2]
-                        dictStranica1 = vraceno1[3]
+                    if rec == "0":
+                        break
 
 
-                        set2 = vraceno2[0]
-                        dictLinks2 = vraceno2[1]
-                        nameList2 = vraceno2[2]
-                        dictStranica2 = vraceno2[3]
+                    rangStranica = prvaFunk[1]
+                    imenaStranicaSaLinkovima = prvaFunk[2]
 
-                        resultSet = set1.__not__(set2)
-                        dictStranica = komplement(dictStranica1, dictStranica2)
-                        for item in resultSet._dict:
-                            print(item)
+                    res = provera(rec)
 
-                        #dictLinks = komplement(dictLinks1, dictLinks2)
-                        #print(dictLinks)
-                    elif proveravaj==5:
-                        #listaReci=rec.split(" ")
-                        print(listaReci)
+                    proveravaj=res[0]       # U zavisnosti od unosa upita i logickog operatora vraca broj koji predstavlja uneseni upit
+                    listaReci=res[1]        # Lista reci u upitu
+                    flag = 1                # Da li treba da se odredjuje rang
 
-                        for rec2 in listaReci:
-                            vraceno = trazi(root, rec2)
-
-                            set1 = vraceno[0]
-                            dictLinks1 = vraceno[1]
-                            nameList1 = vraceno[2]
-                            dictStranica1 = vraceno[3]
-
-                            resultSet = resultSet.__or__(set1)
-                            dictStranica = unija(dictStranica, dictStranica1)
-                            #dictLinks=unija(dictLinks, dictLinks1)
-                            if dictStranica != {}:
-                                print("Postoje stranice")
-                            else:
-                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
-                        #print(dictLinks)
-                        for item in resultSet._dict:
-                            print(item)
-
+                    if rec == "":
+                        print("Ne mozete uneti prazan string")
                     else:
-                        print("Nije dobar format")
-                        flag = 0
 
-                    if flag == 1:
-                        sortiraniDict = odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
-                        paginacija(sortiraniDict)
+                        if proveravaj == 1:         #za AND upit
+                            vraceno1 = trazi(root, listaReci[0])    #za prvu rec (pre AND-a)
+                            set1 = vraceno1[0]
+                            dictLinks1 = vraceno1[1]
+                            dictStranica1 = vraceno1[2]
+
+                            vraceno2 = trazi(root, listaReci[2])     #za drugu rec (posle AND-a)
+                            set2 = vraceno2[0]
+                            dictLinks2 = vraceno2[1]
+                            dictStranica2 = vraceno2[2]
+
+                            resultSet = set1.__and__(set2)
+                            dictStranica = presek(dictStranica1, dictStranica2)
+
+                            if dictStranica == {}:
+                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
+
+                            for item in resultSet._dict:
+                                print(item)
+
+                            for key,value in dictStranica.items():
+                                print(key, value)
+
+                        elif proveravaj == 2:           #za OR upit
+                            vraceno1 = trazi(root, listaReci[0])     #za prvu rec (pre OR-a)
+                            set1 = vraceno1[0]
+                            dictLinks1 = vraceno1[1]
+                            dictStranica1 = vraceno1[2]
+
+                            vraceno2 = trazi(root, listaReci[2])    #za drugu rec (posle OR-a)
+                            set2 = vraceno2[0]
+                            dictLinks2 = vraceno2[1]
+                            dictStranica2 = vraceno2[2]
+
+                            resultSet=set1.__or__(set2)
+                            dictStranica = unija(dictStranica1, dictStranica2)
+
+                            if dictStranica == {}:
+                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
+
+                            for item in resultSet._dict:
+                                print(item)
+
+                        elif proveravaj == 4:       #za NOT upit
+                            vraceno1 = trazi(root, listaReci[0])
+                            vraceno2 = trazi(root, listaReci[2])
+
+                            set1 = vraceno1[0]      #za prvu rec (pre NOT-a)
+                            dictLinks1 = vraceno1[1]
+                            dictStranica1 = vraceno1[2]
+
+
+                            set2 = vraceno2[0]      #za drugu rec (posle NOT-a)
+                            dictLinks2 = vraceno2[1]
+                            dictStranica2 = vraceno2[2]
+
+                            resultSet = set1.__not__(set2)
+                            dictStranica = komplement(dictStranica1, dictStranica2)
+
+                            if dictStranica == {}:
+                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
+                            for item in resultSet._dict:
+                                print(item)
+
+                        elif proveravaj==5:
+
+                            for rec2 in listaReci:         #ukoliko ne postoji logicki operator
+                                vraceno = trazi(root, rec2)
+
+                                set1 = vraceno[0]
+                                dictLinks1 = vraceno[1]
+                                dictStranica1 = vraceno[2]
+
+                                resultSet = resultSet.__or__(set1)
+                                dictStranica = unija(dictStranica, dictStranica1)   #za svaki recnik povezi sa rezultujucim recnikom preko UNIJE
+                            if dictStranica == {}:
+                                print("Ne postoje HTML stranice koje zadovoljavaju upit")
+                            for item in resultSet._dict:
+                                print(item)
+
+                        else:
+                            print("Nije dobar format")
+                            flag = 0
+
+                        if flag == 1:
+                            sortiraniDict = odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
+                            paginacija(sortiraniDict)
+                elif izlaz == "0":
+                    break
+                else:
+                    print("Morate da unesete jednu od ponudjenih opcija")
