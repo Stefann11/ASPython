@@ -2,9 +2,7 @@ from SetImpl import *
 
 
 class TrieNode(object):
-    """
-    Our trie node implementation. Very basic. but does the job
-    """
+
 
     def __init__(self, char: str):
         self.char = char

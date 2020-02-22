@@ -39,7 +39,7 @@ def dodaj(inp):
                 for word in parser.words:
                     add(root, word.lower(), finalPath,parser.links)
 
-    rangStranica, imenaStranicaSaLinkovima = dodavanjeUGraf(graf,dictGraf,filenames)
+    rangStranica, imenaStranicaSaLinkovima = dodavanjeUGraf(graf,dictGraf)
     #print("Svi html fileovi sa svim linkovima")
     #print(dictGraf)
     print("Ukupan broj HTML stranica: ", brojac)

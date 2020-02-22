@@ -1,5 +1,5 @@
-def partition(dict, left, right):
-    """
+"""def partition(dict, left, right):
+
     Funkcija vrši particionisanje niza nad zadatim intervalom
 
     Particionisanje niza vrši se dovođenjem elemenata u takav
@@ -11,7 +11,7 @@ def partition(dict, left, right):
     - `arr`: niz koji se particioniše
     - `left`: indeks krajnjeg levog elementa
     - `right`: indeks krajnjeg desnog elementa
-    """
+
     # poslednji element postaje pivot
     #pivot = arr[right]
     pivot = list(dict.values())[len(dict)-1]
@@ -47,23 +47,24 @@ def partition(dict, left, right):
     dict[list(dict)[i]], dict[list(dict)[right]] = dict[list(dict)[right]], dict[list(dict)[i]]
     print(list(dict.values())[i], "       ", list(dict.values())[right])
     return i
+"""
 
-
-def quick_sort(dict, left, right):
-    """
+"""def quick_sort(dict, left, right):
+    
     Quick sort algoritam
 
     Argumenti:
     - `arr`: niz koji se sortira
     - `left`: indeks krajnjeg levog elementa
     - `right`: indeks krajnjeg desnog elementa
-    """
+   
     print(left, "    ", right)
     if left < right:
         pivot = partition(dict, left, right)
         quick_sort(dict, left, pivot - 1)
         quick_sort(dict, pivot + 1, right)
-
+"""
+"""
 def wrap_quick_sort(arr):
     quick_sort(dict, 0, len(dict) - 1)
 
@@ -72,6 +73,9 @@ def getKeysByValue(dictOfElements, valueToFind):
     for item  in listOfItems:
         if item[1] == valueToFind:
             return item[0]
+
+"""
+
 
 def partition2(arr, left, right):
     """
@@ -88,11 +92,13 @@ def partition2(arr, left, right):
     - `right`: indeks krajnjeg desnog elementa
     """
     # poslednji element postaje pivot
+
     pivot = arr[right]
 
     # varijabla čuva indeks poslednjeg elementa manjeg od pivota
     i = left - 1
 
+    #obican algoritam rastuceg sortiranja
     for j in range(left, right):
         if arr[j] <= pivot:
             i = i + 1
@@ -147,10 +153,4 @@ def sortiranje(dict):
 
     return dict2
 
-if __name__ == "__main__":
-    dict = {'A': 4, 'B': 77, 'C': 50, 'D': 50}
 
-    dict = sortiranje(dict)
-
-    for key, value in dict.items():
-        print(key, value)

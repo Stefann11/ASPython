@@ -2,44 +2,24 @@ from Graf2 import *
 from Trie import *
 import os
 
-def dodavanjeUGraf(graph, dict, imeStranica):
+def dodavanjeUGraf(graph, dict):
     rangStranica = {}
-    imenaStranicaSaLinkovima = {}
-    odgovarajuciDict = {}
-    for file in dict:
-        graph.add_vertex(file)
-        for link in dict[file]:
-            # print(os.path.basename(link))
-            # print(os.path.basename(file))
-            #if os.path.basename(link) in imeStranica:
-            graph.add_edge({file, link})
-            if link in rangStranica:
-                rangStranica[link]+=1
+    imenaStranicaSaLinkovima = {} #imena linkova sa stranicama
+    for file in dict:   #prolazi kroz sve html stranice u direktorijumu
+        graph.add_vertex(file) #dodaje ih kao cvorove
+        for link in dict[file]:  #prolazi kroz sve linkove u direktorijumu
+            graph.add_edge({file, link})  #dodaje ih kao grane
+            if link in rangStranica:  #racuna koliko ce linkova imati neka html stranica
+                rangStranica[link]+=1  #plus 1 za rang ako se link vec nalazi u rangStranica
             else:
-                rangStranica[link] = 1
+                rangStranica[link] = 1  #dodaje link u rangStranica i postavlja mu rang na 1
 
-            if link in imenaStranicaSaLinkovima:
-                imenaStranicaSaLinkovima[link].append(file)
+            if link in imenaStranicaSaLinkovima:  #pravi novi direktorijum gde je key link a value cvorovi koji sadrze taj link
+                imenaStranicaSaLinkovima[link].append(file) #na key link dodajemo value jos jednu html stranicu
             else:
-                imenaStranicaSaLinkovima[link] = [file]
-
-    '''
-    print("Rang stranica")
-    for key, value in rangStranica.items():
-        print(key, value)
-    print("Obrnuto")
-    for key, value in imenaStranicaSaLinkovima.items():
-        print(key,value)
-    '''
+                imenaStranicaSaLinkovima[link] = [file] #na key link dodajemo value jednu html stranicu
 
 
-    '''
-    print("Vertices of graph:")
-    print(graph.vertices())
-
-    print("Edges of graph:")
-    print(graph.edges())
-    '''
     return rangStranica, imenaStranicaSaLinkovima
 
 
