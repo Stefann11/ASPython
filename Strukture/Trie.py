@@ -1,4 +1,4 @@
-from SetImpl import *
+from Strukture.SetImpl import *
 
 
 class TrieNode(object):

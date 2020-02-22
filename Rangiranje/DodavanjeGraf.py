@@ -1,7 +1,3 @@
-from Graf2 import *
-from Trie import *
-import os
-
 def dodavanjeUGraf(graph, dict):
     rangStranica = {}
     imenaStranicaSaLinkovima = {} #imena linkova sa stranicama

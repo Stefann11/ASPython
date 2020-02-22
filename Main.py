@@ -1,13 +1,8 @@
-from parserReci import Parser
-from Trie import *
-from builtins import print
-from DodavanjeGraf import *
-from Upit import *
-from LogDict import *
-from SetImpl import *
-from Iterator import *
-from Paginacija import *
-import os
+from Upiti.Upit import *
+from Upiti.LogDict import *
+from Add_search_parser.Iterator import *
+from Pagination_sort.Paginacija import *
+from Rangiranje.Rang import *
 
 if __name__ == "__main__":
 
@@ -104,7 +99,7 @@ if __name__ == "__main__":
                             dictLinks2 = vraceno2[1]
                             dictStranica2 = vraceno2[2]
 
-                            resultSet = set1.__and__(set2)
+                            resultSet = set1 & set2
                             dictStranica = presek(dictStranica1, dictStranica2)
 
                             if dictStranica == {}:
@@ -113,8 +108,8 @@ if __name__ == "__main__":
                             for item in resultSet._dict:
                                 print(item)
 
-                            for key,value in dictStranica.items():
-                                print(key, value)
+                            #for key,value in dictStranica.items():
+                            #    print(key, value)
 
                         elif proveravaj == 2:           #za OR upit
                             vraceno1 = trazi(root, listaReci[0])     #za prvu rec (pre OR-a)
@@ -127,7 +122,7 @@ if __name__ == "__main__":
                             dictLinks2 = vraceno2[1]
                             dictStranica2 = vraceno2[2]
 
-                            resultSet=set1.__or__(set2)
+                            resultSet=set1 | set2
                             dictStranica = unija(dictStranica1, dictStranica2)
 
                             if dictStranica == {}:
@@ -166,7 +161,7 @@ if __name__ == "__main__":
                                 dictLinks1 = vraceno[1]
                                 dictStranica1 = vraceno[2]
 
-                                resultSet = resultSet.__or__(set1)
+                                resultSet = resultSet | set1
                                 dictStranica = unija(dictStranica, dictStranica1)   #za svaki recnik povezi sa rezultujucim recnikom preko UNIJE
                             if dictStranica == {}:
                                 print("Ne postoje HTML stranice koje zadovoljavaju upit")
@@ -184,3 +179,6 @@ if __name__ == "__main__":
                     break
                 else:
                     print("Morate da unesete jednu od ponudjenih opcija")
+
+        if izlaz == "0":
+            break

@@ -1,11 +1,8 @@
-from parserReci import Parser
-from Trie import *
+from Add_search_parser.parserReci import Parser
+from Strukture.Trie import *
+from Strukture.Graf2 import *
 from builtins import print
-from DodavanjeGraf import *
-from Upit import *
-from LogDict import *
-from SetImpl import *
-from Rang import *
+from Rangiranje.DodavanjeGraf import *
 import os
 
 def dodaj(inp):
@@ -56,11 +53,11 @@ def trazi(root, rec):
     resenje = find_prefix(root,rec)
     if resenje is not None:
         dictStranica = resenje[2]
-        print(dictStranica)
-        print("Linkovi na stranicama")
+        #print(dictStranica)
+        #print("Linkovi na stranicama")
         dictLinkova = resenje[3]
-        print(dictLinkova)
-        print("Ukupan broj reci: ", resenje[1])
+        #print(dictLinkova)
+        #print("Ukupan broj reci: ", resenje[1])
         set = resenje[4]
 
 

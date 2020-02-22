@@ -1,5 +1,4 @@
-from SetImpl import *
-from Sort import *
+from Pagination_sort.Sort import *
 def odrediRang(dictStranica, rangStranice, imenaStranicaSaLinkovima):
     dictRang = {}
     for key1 in imenaStranicaSaLinkovima.keys(): #idi po svim kljucevima tj. linkovima
@@ -43,9 +42,9 @@ def odrediRang(dictStranica, rangStranice, imenaStranicaSaLinkovima):
 
 
 
-    print("Prikaz rangiranog rezultata") #nesortiran prikaz rezultata
-    for key, value in rezultujuciDict.items():
-        print(key, value)
+    #print("Prikaz rangiranog rezultata") #nesortiran prikaz rezultata
+    #for key, value in rezultujuciDict.items():
+    #    print(key, value)
 
     rezultujuciDict = sortiranje(rezultujuciDict) #sortiraj rezultujuciDict
 
