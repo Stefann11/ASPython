@@ -91,21 +91,21 @@ def partition2(arr, left, right):
     - `left`: indeks krajnjeg levog elementa
     - `right`: indeks krajnjeg desnog elementa
     """
-    # poslednji element postaje pivot
+    #poslednji element postaje pivot
 
     pivot = arr[right]
 
-    # varijabla čuva indeks poslednjeg elementa manjeg od pivota
+    #varijabla čuva indeks poslednjeg elementa manjeg od pivota
     i = left - 1
 
     #obican algoritam rastuceg sortiranja
     for j in range(left, right):
-        if arr[j] <= pivot:
+        if arr[j] <= pivot:     #ako je j-ti element iz niza manji ili jednak od pivota
             i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
+            arr[i], arr[j] = arr[j], arr[i]     #zameni
 
     i = i + 1
-    arr[i], arr[right] = arr[right], arr[i]
+    arr[i], arr[right] = arr[right], arr[i]     #zameni
     return i
 
 
@@ -136,21 +136,22 @@ def quick_sort2(arr, left, right):
     '''
 def sortiranje(dict):
     if dict == {}:
-        return {}
-    niz = []
-    dict2 = {}
+        return {}   #proveravamo da li je dict prazan
+    niz = []        #formiramo pomocni niz
+    dict2 = {}      #ovaj dict cemo vratiti
 
     for key, value in dict.items():
-        niz.append(value)
+        niz.append(value)   #u pomocni niz smestamo vrednosti iz dicta koji nam je poslat
 
-    quick_sort2(niz, 0, len(niz)-1)
+    quick_sort2(niz, 0, len(niz)-1)     #u quick_sort saljemo ceo pomocni niz
 
-    for i in niz:
-        for key, value in dict.items():
-            if value == i:
-                dict2[key] = value
-    del dict[key]
+    #algoritam koji ce popuniti dict2 tako da bude sortiran
+    for i in niz:   #idi po svakoj vrednosti pomocnog niza koji je sada sortiran
+        for key, value in dict.items():     #i po svakom kljucu i vrednosti iz dicta koji nam je poslat
+            if value == i:      #ako se vrednost iz dict-a i vrednost iz niza poklapaju
+                dict2[key] = value      #u dict2(koji vracamo) smesti kljuc i vrednost iz dict
 
-    return dict2
+
+    return dict2        #vrati dict2
 
 

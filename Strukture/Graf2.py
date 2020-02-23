@@ -26,9 +26,9 @@ class Graph(object):
         """
         (vertex1, vertex2) = tuple(edge)
         if vertex1 in self.__graph_dict:
-            self.__graph_dict[vertex1].append(vertex2)  #dodaje linkove na cvor kao grane
+            self.__graph_dict[vertex1].append(vertex2)      #dodaje link na cvor, kao granu
         else:
-            self.__graph_dict[vertex1] = [vertex2]    #dodaje prvi link na cvor kao granu
+            self.__graph_dict[vertex1] = [vertex2]          #dodaje prvi link na cvor, kao granu
 
     def __generate_edges(self):
         """ Metoda za generisanje grana u grafu. Grane su skupovi sa jednim ili dva cvora
@@ -37,7 +37,7 @@ class Graph(object):
         for vertex in self.__graph_dict:
             for neighbour in self.__graph_dict[vertex]:
                 if {neighbour, vertex} not in edges:
-                    edges.append({vertex, neighbour})  #povezuje dva cvora (cvor i link)
+                    edges.append({vertex, neighbour})        #povezuje dva cvora (cvor i link)
         return edges
 
 

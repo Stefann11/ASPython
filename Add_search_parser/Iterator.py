@@ -1,7 +1,7 @@
 from Add_search_parser.parserReci import Parser
 from Strukture.Trie import *
 from Strukture.Graf2 import *
-from builtins import print
+#from builtins import print
 from Rangiranje.DodavanjeGraf import *
 import os
 
