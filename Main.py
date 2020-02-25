@@ -173,6 +173,7 @@ if __name__ == "__main__":
                             flag = 0
 
                         if flag == 1:
+                            print()
                             sortiraniDict = odrediRang(dictStranica, rangStranica, imenaStranicaSaLinkovima)
                             paginacija(sortiraniDict)
                 elif izlaz == "0":
