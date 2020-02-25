@@ -4,6 +4,10 @@ def provera(rec):
     listaReci=rec.split(" ")
     counter = 0
 
+    for rec in listaReci:
+        if rec == "":
+            return 6, listaReci
+
     for i in listaReci:
         if i == "OR" or i == "AND" or i == "NOT" or i == "or" or i == "and" or i == "not":
             counter += 1

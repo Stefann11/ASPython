@@ -21,7 +21,7 @@ def paginacija(dict):
                     if j < len(dict):   #dok j nije izaslo iz opsega dict-a
                         print(list(dict)[j], list(dict.values())[j])    #ispisi html stranicu i rang
 
-                print("Unesite 1 za nazad, 3 ako želite da idete unapred ", n, " HTML stranica, 0 ukoliko zelite da promenite broj stranica koje se prikazuju")
+                print("Unesite 1 da bi išli jednu stranu unazad, 3 ako želite da idete unapred jednu stranu, 0 ukoliko zelite da promenite broj stranica koje se prikazuju")
                 r = input()     #unesi r, koji nam govori sta dalje radimo
                 if r == "1":
                     i = i-1     #vrati jednu stranu unazad
