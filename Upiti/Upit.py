@@ -4,8 +4,9 @@ def provera(rec):
     listaReci=rec.split(" ")
     counter = 0
 
-    for rec in listaReci:
-        if rec == "":
+    for i in range(0, len(listaReci)):
+        listaReci[i] = listaReci[i].lower()
+        if listaReci[i] == "":
             return 6, listaReci
 
     for i in listaReci:
